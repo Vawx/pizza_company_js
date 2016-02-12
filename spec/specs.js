@@ -7,6 +7,11 @@ describe( 'Pizza', function() {
    });
    it("calculates cost of pizza", function( ) {
        var pizza = new Pizza( "large", ["pepperoni", "mushroom", "sausage"] );
-       expect( pizza.cost( ) ).to.equal( 16.34 ); 
-   })
+       expect( pizza.cost( ) ).to.equal( '16.34' ); 
+   });
+   it("checks if two pizzas match", function( ) {
+        var pizzaOne = new Pizza( "large", ["pepperoni", "mushroom", "sausage"] );
+        var pizzaTwo = new Pizza( "large", ["pepperoni", "mushroom", "sausage"] );              
+        expect( pizzaOne.equal( pizzaTwo ) ).to.equal( true );
+    });
 });

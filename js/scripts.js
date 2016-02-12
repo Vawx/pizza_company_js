@@ -33,10 +33,10 @@ Pizza.prototype.cost = function( )
 
 Pizza.prototype.equal = function( other )
 {
-    var matching;
+    var matching = false;
     if( this.cost( ) === other.cost( ) && this.size === other.size && other.toppings.length === this.toppings.length )
     {
-        matching == true; 
+        matching = true; 
         for( var i = 0; i < this.toppings.length; i++ )
         {
             if( other.toppings[ i ] !== this.toppings[ i ] )
