@@ -60,9 +60,11 @@ $(document).ready( function( )
     {
         var pizza = new Pizza( getSize( ), getToppings( ) );
         var cost = pizza.cost( );
-        order.push( [ pizza, cost ] );
-        
-        updateOrderList( );
+        if( pizza.size !== undefined )
+        {
+            order.push( [ pizza, cost ] );        
+            updateOrderList( );
+        }
     });
     
     $(".pizza-size").on("click", function( ) 
