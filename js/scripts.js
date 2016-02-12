@@ -82,16 +82,25 @@ $(document).ready( function( )
         $("#order-list").empty( )
         for( var i = 0; i < order.length; i++ )
         {
-            $("#order-list").append("<li class='order-from-list'> <h3> " + order[ i ][ 0 ].size.capitalize( ) + "</h3></li>" );
+            $("#order-list").append("<li id='" + i + "' class='order-from-list'> <h3> " + order[ i ][ 0 ].size.capitalize( ) + "</h3></li>" );
         }
         
         var orderCount = 0;
+        var total = 0;
         $(".order-from-list").each( function( )
         {
-                
-            console.log( order[ orderCount ] );
+            $("#" + this.id).append("<li id='" + this.id + "list" + "'><label> Toppings: </label></li>" );
+            for( var i = 0; i < order[orderCount][0].toppings.length; i++ )
+            {
+                $("#" +this.id + "list" ).append("<li>" + order[orderCount][0].toppings[i].capitalize( ) + "</li>" );
+            }
+            $("#" +this.id + "list" ).append("</ul>");
+            $("#" +this.id + "list" ).append("<h4><b>Cost: " + order[orderCount][1] + "</h4></b>" );
+            total += parseFloat( order[orderCount][1] );
             orderCount += 1;
         });
+        
+        $("#total").text( "Total: $" + total.toFixed(2).toString( ) );
     }
     
     function getToppings( )
