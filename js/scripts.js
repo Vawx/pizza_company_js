@@ -48,6 +48,11 @@ Pizza.prototype.equal = function( other )
     return matching;
 }
 
+String.prototype.capitalize = function( )
+{
+    return this.charAt(0).toUpperCase( ) + this.slice(1);
+}
+
 $(document).ready( function( ) 
 {
     var order = [];
@@ -56,7 +61,8 @@ $(document).ready( function( )
         var pizza = new Pizza( getSize( ), getToppings( ) );
         var cost = pizza.cost( );
         order.push( [ pizza, cost ] );
-        console.log( order );
+        
+        updateOrderList( );
     });
     
     $(".pizza-size").on("click", function( ) 
@@ -70,6 +76,23 @@ $(document).ready( function( )
            }
         });
     });
+    
+    function updateOrderList( )
+    {
+        $("#order-list").empty( )
+        for( var i = 0; i < order.length; i++ )
+        {
+            $("#order-list").append("<li class='order-from-list'> <h3> " + order[ i ][ 0 ].size.capitalize( ) + "</h3></li>" );
+        }
+        
+        var orderCount = 0;
+        $(".order-from-list").each( function( )
+        {
+                
+            console.log( order[ orderCount ] );
+            orderCount += 1;
+        });
+    }
     
     function getToppings( )
     {

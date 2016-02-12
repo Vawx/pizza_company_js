@@ -14,4 +14,7 @@ describe( 'Pizza', function() {
         var pizzaTwo = new Pizza( "large", ["pepperoni", "mushroom", "sausage"] );              
         expect( pizzaOne.equal( pizzaTwo ) ).to.equal( true );
     });
+    it("capitalizes first letter of string", function( ) {
+        expect( "test".capitalize( ) ).to.equal( "Test" );
+    });
 });
